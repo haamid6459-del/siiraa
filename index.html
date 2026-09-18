@@ -4,137 +4,301 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIIRAA - Seenaa Nabiyyii ﷺ</title>
+<title>SIIRAA ﷺ</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
 }
 
 body{
+  font-family:Arial,sans-serif;
   background:#f4f7f5;
-  color:#17251d;
+  color:#17231d;
+  line-height:1.7;
+  transition:.3s;
 }
 
 header{
-  background:#075e54;
+  background:linear-gradient(135deg,#075e54,#0b806f);
   color:white;
-  padding:22px 15px;
+  padding:28px 15px;
   text-align:center;
 }
 
 header h1{
-  font-size:30px;
-  margin-bottom:6px;
+  font-size:34px;
+  margin-bottom:5px;
 }
 
 header p{
-  font-size:15px;
+  font-size:16px;
 }
 
-.search{
-  padding:15px;
+nav{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:10px;
   background:white;
   position:sticky;
   top:0;
   z-index:10;
+  box-shadow:0 2px 8px #0002;
 }
 
-.search input{
+nav button{
+  border:0;
+  background:#e7f2ef;
+  color:#075e54;
+  padding:10px 14px;
+  border-radius:20px;
+  white-space:nowrap;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+nav button:hover{
+  background:#075e54;
+  color:white;
+}
+
+.searchBox{
+  padding:15px;
+  background:#fff;
+}
+
+.searchBox input{
   width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:10px;
+  padding:14px;
+  border:1px solid #ccd8d4;
+  border-radius:12px;
   font-size:16px;
   outline:none;
 }
 
 .container{
-  padding:15px;
-  max-width:800px;
+  max-width:1000px;
   margin:auto;
+  padding:15px;
 }
 
-.welcome{
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.hero{
   background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:18px;
-  box-shadow:0 2px 8px #0001;
+  border-radius:18px;
+  padding:25px;
   text-align:center;
+  margin-bottom:18px;
+  box-shadow:0 3px 12px #0001;
 }
 
-.welcome h2{
+.hero h2{
   color:#075e54;
-  margin-bottom:10px;
+  margin-bottom:8px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:15px;
 }
 
 .card{
   background:white;
   padding:18px;
-  border-radius:14px;
-  margin-bottom:12px;
-  box-shadow:0 2px 7px #0001;
+  border-radius:16px;
+  box-shadow:0 3px 12px #0001;
   cursor:pointer;
   transition:.2s;
 }
 
 .card:hover{
-  transform:scale(1.01);
+  transform:translateY(-3px);
 }
 
 .card h3{
   color:#075e54;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .card p{
-  color:#555;
-  line-height:1.6;
+  color:#52615c;
+  font-size:14px;
 }
 
-.content{
-  display:none;
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 2px 8px #0001;
-  line-height:1.9;
-}
-
-.content h2{
-  color:#075e54;
-  margin-bottom:12px;
-}
-
-.content h3{
-  margin-top:15px;
-  color:#075e54;
-}
-
-.back{
+.openBtn{
+  margin-top:12px;
+  border:0;
   background:#075e54;
   color:white;
-  border:none;
-  padding:11px 18px;
-  border-radius:9px;
+  padding:9px 13px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.backBtn{
+  border:0;
+  background:#075e54;
+  color:white;
+  padding:10px 15px;
+  border-radius:10px;
   margin-bottom:15px;
   cursor:pointer;
 }
 
-mark{
-  background:#ffe58a;
+.reader{
+  display:none;
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 3px 15px #0002;
+}
+
+.reader.active{
+  display:block;
+}
+
+.reader h2{
+  color:#075e54;
+  margin-bottom:15px;
+}
+
+.reader .text{
+  white-space:pre-line;
+  font-size:17px;
+}
+
+.actionBar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:15px 0;
+}
+
+.actionBar button{
+  border:0;
+  padding:10px 13px;
+  border-radius:10px;
+  cursor:pointer;
+  background:#e5f0ed;
+  color:#075e54;
+  font-weight:bold;
+}
+
+.sectionTitle{
+  margin:20px 0 12px;
+  color:#075e54;
+}
+
+.badge{
+  display:inline-block;
+  background:#e8f4f1;
+  color:#075e54;
+  padding:4px 9px;
+  border-radius:15px;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.empty{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
 }
 
 footer{
   text-align:center;
-  padding:25px;
-  color:#777;
-  font-size:14px;
+  padding:30px 15px;
+  margin-top:30px;
+  background:#075e54;
+  color:white;
+}
+
+.dark{
+  background:#111816;
+  color:#eee;
+}
+
+.dark nav,
+.dark .searchBox,
+.dark .hero,
+.dark .card,
+.dark .reader,
+.dark .empty{
+  background:#1b2522;
+  color:#eee;
+}
+
+.dark nav button{
+  background:#293632;
+  color:#eee;
+}
+
+.dark .card p{
+  color:#c6d1cd;
+}
+
+.dark .searchBox input{
+  background:#26312e;
+  color:white;
+  border-color:#45534f;
+}
+
+.dark .sectionTitle,
+.dark .card h3,
+.dark .reader h2,
+.dark .hero h2{
+  color:#72d8c5;
+}
+
+.dark .actionBar button{
+  background:#293632;
+  color:#72d8c5;
+}
+
+.dark .badge{
+  background:#293632;
+  color:#72d8c5;
+}
+
+.dark .reader{
+  box-shadow:0 3px 15px #0008;
+}
+
+.darkBtn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:52px;
+  height:52px;
+  border:0;
+  border-radius:50%;
+  background:#075e54;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+  z-index:20;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:28px;
+  }
+
+  .reader .text{
+    font-size:16px;
+  }
 }
 </style>
 </head>
@@ -143,297 +307,1185 @@ footer{
 
 <header>
   <h1>SIIRAA ﷺ</h1>
-  <p>Seenaa fi jireenya Nabiyyii Muhammad ﷺ</p>
+  <p>Seenaa Nabiyyii Muhammad ﷺ</p>
 </header>
 
-<div class="search">
+<nav>
+  <button onclick="showPage('home')">🏠 Jalqaba</button>
+  <button onclick="showPage('sirah')">📖 Siiraa</button>
+  <button onclick="showPage('companions')">👥 Sahaabaa</button>
+  <button onclick="showPage('family')">❤️ Maatii</button>
+  <button onclick="showPage('hadith')">📜 Hadiisa</button>
+  <button onclick="showFavorites()">⭐ Kuufame</button>
+</nav>
+
+<div class="searchBox">
   <input
-    type="text"
     id="searchInput"
-    placeholder="🔎 Seenaa barbaadi..."
-    onkeyup="searchStories()">
+    type="text"
+    placeholder="🔎 Seenaa, Sahaabaa, Hadiisa barbaadi..."
+    oninput="searchAll()"
+  >
 </div>
 
 <div class="container">
 
-<div id="home">
+<!-- HOME -->
+<section id="home" class="page active">
 
-  <div class="welcome">
-    <h2>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+  <div class="hero">
+    <h2>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</h2>
     <p>
-      Baga gara SIIRAA dhuftan.
-      As keessatti seenaa Nabiyyii Muhammad ﷺ
-      tartiiba isaa hordofuun barachuu dandeessa.
+      Baga gara SIIRAA ﷺ dhuftan.
+      As keessatti seenaa Nabiyyii Muhammad ﷺ,
+      Sahaabaa, Maatii isaa fi hadiisa barachuuf
+      qabiyyee gara garaa argattu.
     </p>
   </div>
 
-  <div class="card story" onclick="openStory('birth')">
-    <h3>1. Dhaloota Nabiyyii ﷺ</h3>
-    <p>Maatii, dhaloota fi ijoollummaa Nabiyyii ﷺ.</p>
+  <h2 class="sectionTitle">📚 Kutaa Barnootaa</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="showPage('sirah')">
+      <span class="badge">Siiraa</span>
+      <h3>📖 Seenaa Nabiyyii ﷺ</h3>
+      <p>
+        Dhaloota irraa kaasee hanga wafaatatti
+        seenaa Nabiyyii ﷺ baradhu.
+      </p>
+    </div>
+
+    <div class="card" onclick="showPage('companions')">
+      <span class="badge">Sahaabaa</span>
+      <h3>👥 Seenaa Sahaabaa</h3>
+      <p>
+        Seenaa fi hojii Sahaabota beekamoo baradhu.
+      </p>
+    </div>
+
+    <div class="card" onclick="showPage('family')">
+      <span class="badge">Maatii</span>
+      <h3>❤️ Maatii Nabiyyii ﷺ</h3>
+      <p>
+        Haadholii Mu'minootaa fi ilmaan Nabiyyii ﷺ.
+      </p>
+    </div>
+
+    <div class="card" onclick="showPage('hadith')">
+      <span class="badge">Hadiisa</span>
+      <h3>📜 Hadiisa</h3>
+      <p>
+        Hadiisa gabaabaa fi barnoota isaanii.
+      </p>
+    </div>
+
   </div>
 
-  <div class="card story" onclick="openStory('youth')">
-    <h3>2. Dargaggummaa fi Amanamummaa</h3>
-    <p>Jireenya isaa yeroo dargaggummaa fi amala isaa.</p>
+  <h2 class="sectionTitle">🌟 Barnoota Har'aa</h2>
+
+  <div class="card" onclick="openReader('intro')">
+    <h3>Siiraan Maali?</h3>
+    <p>Hiika Siiraa fi faayidaa Siiraa baradhu.</p>
+    <button class="openBtn">Bani</button>
   </div>
 
-  <div class="card story" onclick="openStory('revelation')">
-    <h3>3. Jalqaba Wahyii</h3>
-    <p>Wahyiin jalqabaa akkamitti Nabiyyii ﷺ irratti bu'e?</p>
+</section>
+
+
+<!-- SIRAH -->
+<section id="sirah" class="page">
+
+  <h2 class="sectionTitle">📖 Seenaa Nabiyyii Muhammad ﷺ</h2>
+
+  <div id="sirahGrid" class="grid"></div>
+
+</section>
+
+
+<!-- COMPANIONS -->
+<section id="companions" class="page">
+
+  <h2 class="sectionTitle">👥 Sahaabaa</h2>
+
+  <div id="companionsGrid" class="grid"></div>
+
+</section>
+
+
+<!-- FAMILY -->
+<section id="family" class="page">
+
+  <h2 class="sectionTitle">❤️ Maatii Nabiyyii ﷺ</h2>
+
+  <div id="familyGrid" class="grid"></div>
+
+</section>
+
+
+<!-- HADITH -->
+<section id="hadith" class="page">
+
+  <h2 class="sectionTitle">📜 Hadiisa</h2>
+
+  <div id="hadithGrid" class="grid"></div>
+
+</section>
+
+
+<!-- SEARCH -->
+<section id="searchPage" class="page">
+
+  <h2 class="sectionTitle">🔎 Bu'aa Barbaacha</h2>
+
+  <div id="searchResults"></div>
+
+</section>
+
+
+<!-- FAVORITES -->
+<section id="favoritesPage" class="page">
+
+  <h2 class="sectionTitle">⭐ Kuufame</h2>
+
+  <div id="favoriteResults"></div>
+
+</section>
+
+
+<!-- READER -->
+<section id="reader" class="reader">
+
+  <button class="backBtn" onclick="closeReader()">
+    ← Deebi'i
+  </button>
+
+  <h2 id="readerTitle"></h2>
+
+  <div class="actionBar">
+    <button onclick="speakText()">🔊 Dubbisi</button>
+    <button onclick="stopSpeech()">⏹ Dhaabi</button>
+    <button onclick="toggleFavoriteCurrent()">⭐ Kuusi</button>
   </div>
 
-  <div class="card story" onclick="openStory('makkah')">
-    <h3>4. Da'awaa Makkaa</h3>
-    <p>Da'awaa Tawhiidaa fi rakkoo Muslimoonni Makkaa keessa turan.</p>
-  </div>
+  <div id="readerText" class="text"></div>
 
-  <div class="card story" onclick="openStory('hijrah')">
-    <h3>5. Hijraa gara Madiinaa</h3>
-    <p>Hijraa Nabiyyii ﷺ fi sahaabota isaa.</p>
-  </div>
-
-  <div class="card story" onclick="openStory('madinah')">
-    <h3>6. Jireenya Madiinaa</h3>
-    <p>Hawaasa Islaamaa Madiinaa keessatti hundeessuu.</p>
-  </div>
-
-  <div class="card story" onclick="openStory('battles')">
-    <h3>7. Ghazawaat</h3>
-    <p>Taateewwan waraanaa beekamoo yeroo Nabiyyii ﷺ.</p>
-  </div>
-
-  <div class="card story" onclick="openStory('character')">
-    <h3>8. Akhlaaqa Nabiyyii ﷺ</h3>
-    <p>Rahmata, obsaa, haqaa fi amala gaarii isaa.</p>
-  </div>
-
-  <div class="card story" onclick="openStory('family')">
-    <h3>9. Maatii Nabiyyii ﷺ</h3>
-    <p>Haadholii Mu'minotaa, ijoollee fi maatii isaa.</p>
-  </div>
-
-  <div class="card story" onclick="openStory('death')">
-    <h3>10. Dhuma Jireenyaa</h3>
-    <p>Guyyoota dhumaa jireenya Nabiyyii ﷺ.</p>
-  </div>
+</section>
 
 </div>
 
-<!-- CONTENT -->
-
-<div id="birth" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Dhaloota Nabiyyii Muhammad ﷺ</h2>
-
-<p>
-Nabiyyiin Muhammad ﷺ ilma Abdullah ibn Abdul-Muttalib ti.
-Inni keessaa gosa Quraysh, maatii Banu Haashim irraa dhalate.
-</p>
-
-<h3>Maatiin isaa</h3>
-
-<p>
-Maqaan haadha isaa Aaminah bint Wahb ture.
-Abbaan isaa Abdullah dhaloota isaa dura du'e.
-Kanaaf Nabiyyiin ﷺ abbaa malee guddachuu jalqabe.
-</p>
-
-<h3>Ijoollummaa</h3>
-
-<p>
-Ijoollummaa isaa keessatti haadha manaa isaatiin,
-ergasii immoo abbeera isaa fi namoota maatii isaa keessaa
-jiran waliin guddachaa ture.
-</p>
-</div>
-
-<div id="youth" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Dargaggummaa fi Amanamummaa</h2>
-
-<p>
-Nabiyyiin Muhammad ﷺ yeroo dargaggummaa isaa keessatti
-amanamummaa fi amala gaarii isaatiin beekamaa ture.
-Namoonni Makkaa isa
-<strong>Al-Amiin</strong> jechuun waamu turan.
-</p>
-
-<p>
-Inni nama amanamaa, dhugaa dubbatu fi nama haqaa ture.
-</p>
-</div>
-
-<div id="revelation" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Jalqaba Wahyii</h2>
-
-<p>
-Nabiyyiin Muhammad ﷺ yeroo umriin isaa waggaa 40 ga'u,
-Ghar Hiraa keessatti ibaadaa fi xiinxala keessa ture.
-</p>
-
-<p>
-Achitti Mala'ikni Jibriil عليه السلام itti dhufee,
-wahyii Rabbii irraa fide.
-</p>
-
-<h3>Jalqaba suuratu Al-'Alaq</h3>
-
-<p>
-﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾
-</p>
-
-<p>
-Kana booda Nabiyyiin ﷺ ummata gara Tawhiidaa fi
-ibaadaa Rabbii tokkichaatti waamuu jalqabe.
-</p>
-</div>
-
-<div id="makkah" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Da'awaa Makkaa</h2>
-
-<p>
-Nabiyyiin ﷺ Makkaa keessatti gara Rabbii tokkichaatti
-namoota waamuu jalqabe.
-</p>
-
-<p>
-Muslimoonni jalqabaa rakkoo fi hacuuccaa hedduu
-Quraysh irraa argatan. Ta'us Nabiyyiin ﷺ fi sahaabonni
-isaa sabrii fi jabaatanii amantii isaanii irratti itti fufan.
-</p>
-</div>
-
-<div id="hijrah" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Hijraa gara Madiinaa</h2>
-
-<p>
-Yeroo rakkoon Makkaa cimaa ta'etti,
-Nabiyyiin ﷺ sahaabota isaa waliin gara Madiinaa
-hijraa godhe.
-</p>
-
-<p>
-Hijraan kun seenaa Islaamaa keessatti taatee guddaa dha.
-Madiinaan booda bakka hawaasni Islaamaa itti
-cime taate.
-</p>
-</div>
-
-<div id="madinah" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Jireenya Madiinaa</h2>
-
-<p>
-Madiinaa keessatti Nabiyyiin ﷺ Masjida Nabawii ijaaree,
-Muslimoota walitti hidhuu fi hawaasa Islaamaa
-sirnaan hundeessuu irratti hojjetan.
-</p>
-
-<p>
-Obbolummaa Muslimootaa cimsuu fi haqaa irratti
-hawaasa barsiisuun hojii isaa keessaa ture.
-</p>
-</div>
-
-<div id="battles" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Ghazawaat</h2>
-
-<p>
-Yeroo Madiinaa keessatti Muslimoonni rakkoolee
-gara garaa keessa darban.
-Taateewwan beekamoo keessaa Badr, Uhud fi Khandaq
-seenaa Islaamaa keessatti bakka guddaa qabu.
-</p>
-
-<p>
-Taateewwan kana yeroo barattu, sababoota isaanii,
-barumsa isaanii fi waan irraa baratamu adda baasuun
-barbaachisaa dha.
-</p>
-</div>
-
-<div id="character" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Akhlaaqa Nabiyyii ﷺ</h2>
-
-<p>
-Nabiyyiin Muhammad ﷺ rahmata, dhugaa, amanamummaa,
-obsaa fi araara keessatti fakkeenya guddaa ture.
-</p>
-
-<p>
-Rabbii ol ta'aan Qur'aana keessatti akhlaaqa isaa
-ol kaasee ibseera.
-</p>
-
-<p>
-﴿وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ﴾
-</p>
-</div>
-
-<div id="family" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Maatii Nabiyyii ﷺ</h2>
-
-<p>
-Nabiyyiin ﷺ haadholii Mu'minotaa fi ijoollee qaba ture.
-Maatiin isaa seenaa Siiraa keessatti bakka guddaa qabu.
-</p>
-
-<p>
-Seenaa tokkoon tokkoon isaanii boqonnaa adda addaatiin
-gara fuulduraatti bal'inaan dabaluun ni danda'ama.
-</p>
-</div>
-
-<div id="death" class="content">
-<button class="back" onclick="goHome()">← Deebi'i</button>
-
-<h2>Dhuma Jireenyaa Nabiyyii ﷺ</h2>
-
-<p>
-Nabiyyiin Muhammad ﷺ ergaa Rabbii ummataaf dabarsuu,
-amantiif waamuu fi hawaasa Islaamaa barsiisuu keessatti
-jireenya isaa guutuu dabarse.
-</p>
-
-<p>
-Seenaa dhuma jireenyaa isaa fi barumsa Khutbaa Hajjatul-Wadaa'
-boqonnaa bal'aa keessatti dabaluun ni danda'ama.
-</p>
-</div>
-
-</div>
+<button class="darkBtn" onclick="toggleDark()">🌙</button>
 
 <footer>
-SIIRAA ﷺ<br>
-Seenaa Nabiyyii Muhammad ﷺ
+  <strong>SIIRAA ﷺ</strong>
+  <br>
+  Seenaa Nabiyyii Muhammad ﷺ
+  <br><br>
+  © 2026
 </footer>
+
 
 <script>
 
-function openStory(id){
+/* =========================
+   SIIRAA
+========================= */
 
-  document.getElementById("home").style.display="none";
+const sirah = [
 
-  document.querySelectorAll(".content").forEach(function(el){
-    el.style.display="none";
+{
+id:"s1",
+title:"Siiraan Maali?",
+short:"Hiika Siiraa fi barbaachisummaa ishee.",
+text:`
+Siiraan jechuun seenaa jireenyaa Nabiyyii Muhammad ﷺ, amala isaa, da‘awaa isaa, hijraa isaa, lola isaa, maatii isaa fi waan inni ummata barsiise beekuudha.
+
+Siiraan Qur’aana fi Hadiisa hubachuuf gargaara. Jireenya Nabiyyii ﷺ keessatti fakkeenya gaarii arganna.
+
+Muslimni yeroo Siiraa baratu, jaalala Nabiyyii ﷺ, obsa, amanamummaa, rahmata fi tawakkula barachuu danda’a.
+
+Waan irraa barannu:
+• Amanamummaa
+• Obsa
+• Tawakkula
+• Rahmata
+• Da‘awaa sirrii
+• Obbolummaa
+`
+},
+
+{
+id:"s2",
+title:"Nasaba Nabiyyii ﷺ",
+short:"Maatii fi sanyii Nabiyyii Muhammad ﷺ.",
+text:`
+Nabiyyiin Muhammad ﷺ ilma Abdullah ibn Abdul-Muxxalib ibn Haashim ture.
+
+Inni gosa Quraysh keessaa, Banu Haashim irraa ture.
+
+Nabiyyiin ﷺ sanyii Ismaa'iil ilma Ibraahiim عليهما السلام irraa dhufe.
+
+Quraysh Makkaa keessatti gosa beekamaa ture.
+
+Nabiyyii ﷺ ilaalchisee nasaba isaa beekuun Siiraa keessatti bakka guddaa qaba.
+`
+},
+
+{
+id:"s3",
+title:"Dhaloota Nabiyyii ﷺ",
+short:"Dhaloota Nabiyyii Muhammad ﷺ.",
+text:`
+Nabiyyiin Muhammad ﷺ Makkaa keessatti dhalate.
+
+Abbaan isaa Abdullah dhaloota isaa dura du'e.
+
+Haati isaa Aaminah bint Wahb turte.
+
+Nabiyyiin ﷺ ijoollummaa isaa keessatti haala addaa keessa guddate.
+
+Jireenyi isaa jalqabumaa irraa eegalee qormaata hedduu qaba ture.
+`
+},
+
+{
+id:"s4",
+title:"Dargaggummaa Nabiyyii ﷺ",
+short:"Jireenya isaa yeroo dargaggummaa.",
+text:`
+Nabiyyiin ﷺ dargaggummaa isaa keessatti hojiiwwan hawaasa keessatti beekamoo ta'an hojjetaa ture.
+
+Inni amanamaa fi dhugaa dubbataa ture.
+
+Namoonni Makkaa amanamummaa isaa irraa kan ka'e isa kabaju turan.
+
+Jireenya isaa keessatti cubbuu fi amala badaa irraa fagaachuu isaa beekna.
+
+Kunis namaaf fakkeenya guddaa dha.
+`
+},
+
+{
+id:"s5",
+title:"Al-Amiin ﷺ",
+short:"Amanamummaa Nabiyyii ﷺ.",
+text:`
+Quraysh Nabiyyii Muhammad ﷺ "Al-Amiin" jechuun waamu turan.
+
+Al-Amiin jechuun nama amanamaa jechuudha.
+
+Namoonni qabeenya isaanii isa bira kaa'achuu danda'u turan.
+
+Nabiyyiin ﷺ dhugaa dubbachuu fi amanamummaa irratti beekamaa ture.
+
+Muslimni jireenya isaa keessatti amanamaa ta'uu qaba.
+`
+},
+
+{
+id:"s6",
+title:"Khadiijah رضي الله عنها",
+short:"Haadha Mu'minootaa Khadiijah.",
+text:`
+Khadiijah رضي الله عنها haadha manaa jalqabaa Nabiyyii ﷺ turte.
+
+Yeroo Nabiyyiin ﷺ wahyii argate, isheen isa jajjabeessite.
+
+Isheen yeroo rakkinaa keessatti Nabiyyii ﷺ bira dhaabbattee turte.
+
+Khadiijah رضي الله عنها Islaama keessatti gahee guddaa qabdi.
+
+Jaalala, amanamummaa fi deeggarsa ishee irraa barachuu dandeenya.
+`
+},
+
+{
+id:"s7",
+title:"Ijaarsa Ka'abaa",
+short:"Rakkoo Hajarul-Aswad.",
+text:`
+Yeroo Quraysh Ka'abaa haaromsaa turan, bakka Hajarul-Aswad kaa'uu irratti garaagarummaan uumame.
+
+Nabiyyiin ﷺ yeroo sanatti furmaata hikmaa qabu dhiheesse.
+
+Inni dhagicha uffata irratti kaa'ee gosoota akka waliin olkaasan godhe.
+
+Boodarra Nabiyyiin ﷺ bakka isaa kaa'e.
+
+Kun hikmaa fi araara isaa agarsiisa.
+`
+},
+
+{
+id:"s8",
+title:"Ghara Hiraa",
+short:"Bakki wahyii jalqabaa itti dhufe.",
+text:`
+Nabiyyiin ﷺ yeroo wahyii dura gara Ghara Hiraa deemaa ture.
+
+Achitti ibaadaa fi tafakkura keessatti yeroo dabarsaa ture.
+
+Ghara Hiraa bakka Makkaa irraa fagoo xiqqoo jiru ture.
+
+Achitti wahyiin jalqabaa Nabiyyii ﷺ irratti bu'e.
+`
+},
+
+{
+id:"s9",
+title:"Jalqaba Wahyii",
+short:"Wahyii jalqabaa.",
+text:`
+Yeroo Nabiyyiin ﷺ Ghara Hiraa keessa ture, Malaykaa Jibriil عليه السلام isa bira dhufe.
+
+Jibriil عليه السلام "Iqra'" jedheen.
+
+Aayata jalqabaa Suuratu Al-'Alaq irraa bu'e.
+
+Wahyiin kun jalqaba ergama Nabiyyii Muhammad ﷺ ti.
+
+Qur'aanni qajeelfama ilmaan namaati.
+`
+},
+
+{
+id:"s10",
+title:"Da‘awaa Dhokataa",
+short:"Jalqaba waamicha Islaamaa.",
+text:`
+Erga wahyiin jalqabee booda Nabiyyiin ﷺ namoota gara Islaamaatti waamuu jalqabe.
+
+Jalqabatti da‘awaan isaa yeroo muraasaaf dhokataa ture.
+
+Namoota isa amanan keessaa Khadiijah, Abuu Bakr, Aliyy fi Zayd ibn Haarithah رضي الله عنهم ni eeramu.
+
+Islaamni suuta suutaan babal'achuu jalqabe.
+`
+},
+
+{
+id:"s11",
+title:"Da‘awaa Ifaa",
+short:"Da‘awaa gara ummataatti ifatti.",
+text:`
+Booda Nabiyyiin ﷺ da‘awaa isaa ifatti labsuu jalqabe.
+
+Quraysh waamicha Tawhiidaa kana mormuu jalqaban.
+
+Nabiyyiin ﷺ namoota gara Rabbii tokko qofa gabbaruutti waame.
+
+Da‘awaan isaa obsa, hikmaa fi dhugaa irratti hundaa'e.
+`
+},
+
+{
+id:"s12",
+title:"Hacuuccaa Quraysh",
+short:"Rakkina Muslimoonni Makkaa keessa.",
+text:`
+Muslimoonni jalqabaa hacuuccaa fi rakkoo guddaa keessa darban.
+
+Namoonni Islaama keessa seenan tokko tokko adamsamanii, reebamanii fi miidhaman.
+
+Nabiyyiin ﷺ Muslimoota isaa obsa akka qabaatan barsiise.
+
+Qormaanni kun Muslimoota jalqabaa amantii isaanii irratti jabeesse.
+`
+},
+
+{
+id:"s13",
+title:"Hijraa Habashaa",
+short:"Muslimoonni gara Habashaa godaanan.",
+text:`
+Yeroo hacuuccaan Makkaa hammaate, Muslimoonni tokko tokko gara Habashaa godaanan.
+
+Mootiin Habashaa Najjaashii jedhamu haqaa fi amanamummaa isaatiin beekamaa ture.
+
+Hijraan kun Muslimootaaf bakka nageenyaa barbaaduuf taasifame.
+
+Kunis da‘awaa Islaamaa keessatti obsa fi sirna karooraa agarsiisa.
+`
+},
+
+{
+id:"s14",
+title:"Wafaat Abuu Xaalib fi Khadiijah",
+short:"Waggaa gaddaa.",
+text:`
+Abuu Xaalib Nabiyyii ﷺ yeroo Makkaa keessa ture keessatti isa deeggaru keessaa tokko ture.
+
+Khadiijah رضي الله عنها immoo haadha manaa fi nama isa jajjabeessu guddaa turte.
+
+Du'aan isaanii Nabiyyii ﷺ irratti gadda guddaa fida.
+
+Waggaa kana yeroo baay'ee "Aamul-Huzn" jechuun waamu.
+`
+},
+
+{
+id:"s15",
+title:"Israa fi Mi‘iraaj",
+short:"Imala halkan tokko keessatti.",
+text:`
+Israa fi Mi‘iraaj jechuun mu'jizaa guddaa Nabiyyii ﷺ ti.
+
+Nabiyyiin ﷺ halkan tokko keessatti Masjidul-Haraam irraa gara Masjidul-Aqsaa geeffame.
+
+Boodarra gara samiiwwan ol baafame.
+
+Taatee kana keessatti salaanni dirqama godhamuu isaa hadiisota keessatti ni arganna.
+
+Kun mallattoo guddaa Nabiyyummaa ti.
+`
+},
+
+{
+id:"s16",
+title:"Bay‘atul Aqabah",
+short:"Waadaa ummata Yathrib.",
+text:`
+Namoonni Yathrib irraa dhufan Nabiyyii ﷺ waliin wal qunnamanii Islaama fudhatan.
+
+Booda walga'iinsi Aqabah keessatti waadaa fi deeggarsa irratti taasifame.
+
+Kun gara Hijraa Madiinaa karaa banaa deeme.
+`
+},
+
+{
+id:"s17",
+title:"Hijraa gara Madiinaa",
+short:"Godaanuu Nabiyyii ﷺ.",
+text:`
+Nabiyyiin ﷺ Abuu Bakr As-Siddiiq رضي الله عنه waliin Makkaa irraa gara Madiinaa godaane.
+
+Hijraan Muslimootaaf boqonnaa haaraa bante.
+
+Madiinaa keessatti hawaasni Islaamaa sirnaan ijaaramuu jalqabe.
+
+Hijraan seenaa Islaamaa keessatti bakka guddaa qaba.
+`
+},
+
+{
+id:"s18",
+title:"Masjida Nabawii ﷺ",
+short:"Ijaarsa masjida Madiinaa.",
+text:`
+Nabiyyiin ﷺ yeroo Madiinaa gahe, masjida ijaaruu keessatti gahee qabaate.
+
+Masjidni Nabawii bakka salaataa qofa osoo hin taane bakka barnootaa, marii fi hawaasummaa ture.
+
+Masjidni jireenya Muslimootaa keessatti bakka guddaa qaba.
+`
+},
+
+{
+id:"s19",
+title:"Muhaajirootaa fi Ansaar",
+short:"Obbolummaa Muslimootaa.",
+text:`
+Muhaajiroonni Makkaa irraa godaanan.
+
+Ansaar immoo Muslimoota Madiinaa irraa Nabiyyii ﷺ fi Muhaajiroota simatan.
+
+Nabiyyiin ﷺ obbolummaa isaanii cimsuuf hojii guddaa hojjete.
+
+Obbolummaan Islaamaa qabeenya, gosa fi biyya caala.
+`
+},
+
+{
+id:"s20",
+title:"Lola Badr",
+short:"Badr, 2 AH.",
+text:`
+Lolli Badr waggaa 2 Hijraa keessatti raawwatame.
+
+Inni lola guddaa jalqabaa Muslimoota fi Quraysh gidduutti taasifame keessaa isa beekamaa dha.
+
+Muslimoonni lakkoofsaan xiqqaa turan.
+
+Taatee Badr keessatti tawakkula, obsa fi ajaja Rabbii hordofuu irraa barnoota hedduu arganna.
+`
+},
+
+{
+id:"s21",
+title:"Lola Uhud",
+short:"Uhud, 3 AH.",
+text:`
+Lolli Uhud waggaa 3 Hijraa keessatti raawwatame.
+
+Muslimoonni jalqaba irratti haala gaarii keessa turan.
+
+Booda qajeelfama Nabiyyii ﷺ keessaa tokko irratti dogoggorri uumame.
+
+Uhud irraa ajaja hordofuu, obsa fi of eeggannoo baranna.
+`
+},
+
+{
+id:"s22",
+title:"Lola Khandaq",
+short:"Lola Ahzaab.",
+text:`
+Lolli Khandaq ykn Ahzaab waggaa 5 Hijraa keessa raawwatame.
+
+Muslimoonni Madiinaa ittisuuf khandaq qotan.
+
+Yaadni khandaq qotuu Salmaan Al-Faarisii رضي الله عنه irraa dhufe jedhamee seenaa keessatti beekama.
+
+Lolli kun obsa fi karoora Muslimootaa agarsiisa.
+`
+},
+
+{
+id:"s23",
+title:"Hudaybiyyah",
+short:"Waliigaltee Hudaybiyyah.",
+text:`
+Waliigalteen Hudaybiyyah waggaa 6 Hijraa keessa taasifame.
+
+Nabiyyiin ﷺ fi Muslimoonni Umraa gochuuf Makkaa deeman.
+
+Waliigalteen sun yeroo jalqabaa Muslimootaaf ulfaataa fakkaatus, booda bu'aa guddaa fide.
+
+Da‘awaan Islaamaa babal'achuuf karaa banaa ta'e.
+`
+},
+
+{
+id:"s24",
+title:"Da‘awaa Mootummoota",
+short:"Ergaa Islaamaa gara mootummootaatti.",
+text:`
+Nabiyyiin ﷺ erga Hudaybiyyah booda ergaa gara bulchitoota fi mootummoota gara garaatti erguu jalqabe.
+
+Ergaan isaa gara Islaamaatti waamicha ture.
+
+Kun da‘awaan Islaamaa daangaa Makkaa fi Madiinaa qofa akka hin taane agarsiisa.
+`
+},
+
+{
+id:"s25",
+title:"Fath Makkaa",
+short:"Baniinsa Makkaa.",
+text:`
+Makkaan waggaa 8 Hijraa keessa Muslimootaaf banamte.
+
+Nabiyyiin ﷺ yeroo Makkaa seene haaluma baay'ee keessatti araara fi rahmata agarsiise.
+
+Ka'abaa keessatti waaqeffannaa shirkii balleessuun Tawhiida deebisee dhaabe.
+
+Fath Makkaa keessatti humna qabaachuun qofa osoo hin taane araara baranna.
+`
+},
+
+{
+id:"s26",
+title:"Hunayn",
+short:"Lola Hunayn.",
+text:`
+Lolli Hunayn waggaa 8 Hijraa keessa raawwatame.
+
+Muslimoonni yeroo tokko lakkoofsa isaanii hedduu ta'uu irratti hirkachuu irraa akeekkachiisa argatan.
+
+Inni tawakkula Rabbii irratti hirkachuu barsiisa.
+`
+},
+
+{
+id:"s27",
+title:"Tabuuk",
+short:"Duula Tabuuk.",
+text:`
+Duulli Tabuuk waggaa 9 Hijraa keessa raawwatame.
+
+Haalli isaa ho'a, fageenya fi rakkoo qabeenyaa qaba ture.
+
+Muslimoonni qormaata cimaa keessatti ajaja Nabiyyii ﷺ hordofan.
+
+Tabuuk irraa sadaqaa, obsa fi wareegama baranna.
+`
+},
+
+{
+id:"s28",
+title:"Hajjatul-Wadaa‘",
+short:"Hajjii Nabiyyii ﷺ.",
+text:`
+Nabiyyiin ﷺ waggaa 10 Hijraa Hajjii isaa beekamaa, Hajjatul-Wadaa‘, raawwate.
+
+Hajjii kana keessatti Muslimootaaf barnoota guddaa kenne.
+
+Kabaja lubbuu, qabeenyaa, dhiigaa fi mirga namaa irratti akeekkachiise.
+
+Khuxbaan isaa seenaa Islaamaa keessatti bakka guddaa qaba.
+`
+},
+
+{
+id:"s29",
+title:"Guyyoota Dhumaa",
+short:"Guyyoota dhumaa jireenya Nabiyyii ﷺ.",
+text:`
+Nabiyyiin ﷺ dhukkubsachuu jalqabe.
+
+Guyyoota dhumaa keessatti salaata, namoota irratti gaarii ta'uu fi Rabbii sodaachuu irratti akeekkachiisa kenne.
+
+Ummatasaaf qajeelfama guddaa dhiisee deeme.
+`
+},
+
+{
+id:"s30",
+title:"Wafaat Nabiyyii ﷺ",
+short:"Du'aa Nabiyyii Muhammad ﷺ.",
+text:`
+Nabiyyiin Muhammad ﷺ Madiinaa keessatti waggaa 11 Hijraa keessa du'e.
+
+Umrii isaa gara waggaa 63tti tilmaamama.
+
+Duuti isaa Sahaabota irratti gadda guddaa fida.
+
+Abuu Bakr رضي الله عنه Muslimoota jajjabeessuun Nabiyyiin ﷺ akka du'u mirkaneesse.
+
+Qur'aanni fi Sunnanni Nabiyyii ﷺ karaa qajeelaa ummataaf hafu.
+`
+}
+
+];
+
+
+/* =========================
+   SAHAABAA
+========================= */
+
+const companions = [
+
+{
+id:"c1",
+title:"Abuu Bakr As-Siddiiq رضي الله عنه",
+short:"Hiriyyaa fi khalifaa jalqabaa.",
+text:`
+Abuu Bakr As-Siddiiq رضي الله عنه Sahaabaa beekamaa fi hiriyyaa dhihoo Nabiyyii ﷺ ture.
+
+Hijraa keessatti Nabiyyii ﷺ waliin ture.
+
+Erga Nabiyyiin ﷺ du'ee booda khalifaa jalqabaa Muslimootaa ta'e.
+
+Amanamummaa fi jaalalli isaa Nabiyyii ﷺ irraa fakkeenya guddaa dha.
+`
+},
+
+{
+id:"c2",
+title:"Umar ibn Al-Khaxxaab رضي الله عنه",
+short:"Khalifaa lammaffaa.",
+text:`
+Umar ibn Al-Khaxxaab رضي الله عنه Sahaabaa beekamaa ture.
+
+Islaama seenuun isaa Muslimootaaf humna guddaa fide.
+
+Erga Abuu Bakr booda khalifaa ta'e.
+
+Haqa, murtii fi sodaa Rabbii irratti beekamaa ture.
+`
+},
+
+{
+id:"c3",
+title:"Uthmaan ibn Affaan رضي الله عنه",
+short:"Khalifaa sadaffaa.",
+text:`
+Uthmaan ibn Affaan رضي الله عنه Sahaabaa fi khalifaa sadaffaa ture.
+
+Nabiyyiin ﷺ isa kabajaa guddaa qabu ture.
+
+Qur'aana walitti qabuu fi qaraatii isaa tokkoomsuu keessatti gahee guddaa qaba.
+`
+},
+
+{
+id:"c4",
+title:"Aliyy ibn Abii Xaalib رضي الله عنه",
+short:"Sahaabaa fi khalifaa afraffaa.",
+text:`
+Aliyy ibn Abii Xaalib رضي الله عنه ilma abbeeraa Nabiyyii ﷺ ture.
+
+Ijoollee keessaa namoota jalqaba Islaama fudhatan keessaa tokko.
+
+Ilmi Abootaalib, abbaa Faaximah رضي الله عنها fi abbaa Hasan fi Husayn ti.
+
+Beekumsa fi gootummaa isaatiin beekamaa ture.
+`
+},
+
+{
+id:"c5",
+title:"Bilaal ibn Rabaah رضي الله عنه",
+short:"Mu'azzina Nabiyyii ﷺ.",
+text:`
+Bilaal ibn Rabaah رضي الله عنه Muslimoota jalqabaa keessaa tokko.
+
+Qormaata cimaa keessa darbe.
+
+Nabiyyiin ﷺ isa mu'azzina godhe.
+
+Sagaleen isaa azaana Islaamaa keessatti seenaa guddaa qaba.
+`
+},
+
+{
+id:"c6",
+title:"Mus'ab ibn Umayr رضي الله عنه",
+short:"Da'ii gara Madiinaa ergame.",
+text:`
+Mus'ab ibn Umayr رضي الله عنه Sahaabaa dargaggeessa ture.
+
+Nabiyyiin ﷺ gara Madiinaa barsiisaa fi da'ii godhee erge.
+
+Namoota hedduu gara Islaamaatti waamuu keessatti gahee qaba.
+
+Uhud keessatti shahida'e.
+`
+},
+
+{
+id:"c7",
+title:"Abuu Hurayrah رضي الله عنه",
+short:"Nama hadiisa hedduu dabarse.",
+text:`
+Abuu Hurayrah رضي الله عنه Sahaabaa hadiisa hedduu dabarse keessaa isa beekamaa dha.
+
+Nabiyyii ﷺ waliin yeroo hedduu ture.
+
+Yaadannoo cimaa qabaachuun beekamaa ture.
+
+Hadiisa Nabiyyii ﷺ dhaloota boodaaf dabarsuu keessatti gahee guddaa qaba.
+`
+},
+
+{
+id:"c8",
+title:"Salmaan Al-Faarisii رضي الله عنه",
+short:"Sahaabaa barbaacha dhugaa.",
+text:`
+Salmaan Al-Faarisii رضي الله عنه dhugaa barbaachaaf imala dheeraa godhe.
+
+Booda Islaama argatee Nabiyyii ﷺ waliin ta'e.
+
+Lola Khandaq keessatti yaada khandaq qotuu dhiheessuu isaa seenaa keessatti beekama.
+`
+},
+
+{
+id:"c9",
+title:"Sa'd ibn Abii Waqqaas رضي الله عنه",
+short:"Sahaabaa beekamaa fi loltuu.",
+text:`
+Sa'd ibn Abii Waqqaas رضي الله عنه Sahaabaa beekamaa ture.
+
+Islaama jalqabaa fudhatan keessaa tokko.
+
+Lola hedduu keessatti hirmaate.
+
+Gootummaa fi du'aa isaa keessatti beekamaa ture.
+`
+},
+
+{
+id:"c10",
+title:"Khaalid ibn Al-Waliid رضي الله عنه",
+short:"Seeftii Rabbii.",
+text:`
+Khaalid ibn Al-Waliid رضي الله عنه gootummaa fi dandeettii waraanaa isaatiin beekamaa ture.
+
+Islaama booda Muslimootaaf lolaa ture.
+
+Nabiyyiin ﷺ "Seeftii Rabbii" jechuun isa waame jedhamee hadiisa keessatti dhufe.
+`
+},
+
+{
+id:"c11",
+title:"Abuu Ubaydah ibn Al-Jarraah رضي الله عنه",
+short:"Amanamaa ummata kanaa.",
+text:`
+Abuu Ubaydah ibn Al-Jarraah رضي الله عنه Sahaabaa beekamaa ture.
+
+Nabiyyiin ﷺ amanamaa ummata kanaa jechuun isa faarsan.
+
+Obsa, amanamummaa fi gadi of qabuu keessatti fakkeenya.
+`
+},
+
+{
+id:"c12",
+title:"Talhah ibn Ubaydillaah رضي الله عنه",
+short:"Sahaabaa beekamaa.",
+text:`
+Talhah ibn Ubaydillaah رضي الله عنه Sahaabaa beekamaa keessaa tokko.
+
+Lola Uhud keessatti Nabiyyii ﷺ tiksuu keessatti gahee guddaa qaba.
+
+Jaalala Nabiyyii ﷺ fi wareegama isaa irraa barnoota arganna.
+`
+},
+
+{
+id:"c13",
+title:"Az-Zubayr ibn Al-Awwaam رضي الله عنه",
+short:"Sahaabaa fi nama jabaataa.",
+text:`
+Az-Zubayr ibn Al-Awwaam رضي الله عنه Sahaabaa beekamaa ture.
+
+Nabiyyii ﷺ waliin yeroo hedduu hirmaate.
+
+Gootummaa fi amanamummaa isaatiin beekamaa ture.
+`
+},
+
+{
+id:"c14",
+title:"Sa'd ibn Mu'aadh رضي الله عنه",
+short:"Nama Ansaar keessaa.",
+text:`
+Sa'd ibn Mu'aadh رضي الله عنه nama Ansaar keessaa beekamaa ture.
+
+Madiinaa keessatti Islaama babal'achuu keessatti gahee qaba.
+
+Nabiyyiin ﷺ isa kabajaa guddaa qabu ture.
+`
+},
+
+{
+id:"c15",
+title:"Anas ibn Maalik رضي الله عنه",
+short:"Khadiimaa Nabiyyii ﷺ.",
+text:`
+Anas ibn Maalik رضي الله عنه Nabiyyii ﷺ tajaajilaa ture.
+
+Yeroo dheeraa Nabiyyii ﷺ waliin jiraachuun hadiisa fi amala isaa irraa barate.
+
+Jireenya Nabiyyii ﷺ dabarsuu keessatti gahee guddaa qaba.
+`
+}
+
+];
+
+
+/* =========================
+   MAATII
+========================= */
+
+const family = [
+
+{
+id:"f1",
+title:"Khadiijah رضي الله عنها",
+short:"Haadha Mu'minootaa fi haadha manaa jalqabaa.",
+text:`
+Khadiijah رضي الله عنها haadha manaa jalqabaa Nabiyyii ﷺ turte.
+
+Yeroo wahyii jalqabaa Nabiyyii ﷺ jajjabeessite.
+
+Isheen yeroo rakkoo keessatti Nabiyyii ﷺ deeggarte.
+`
+},
+
+{
+id:"f2",
+title:"Sawdah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Sawdah رضي الله عنها haadholii Mu'minootaa keessaa tokko.
+
+Nabiyyii ﷺ waliin jireenya maatii keessatti gahee qabaatte.
+
+Gara laafina fi amala gaariin beekamti.
+`
+},
+
+{
+id:"f3",
+title:"Aa'ishah رضي الله عنها",
+short:"Haadha Mu'minootaa fi beekduu hadiisaa.",
+text:`
+Aa'ishah رضي الله عنها haadholii Mu'minootaa keessaa tokko.
+
+Hadiisa hedduu dabarsite.
+
+Beekumsa Islaamaa keessatti gahee guddaa qabdi.
+
+Sahaaboonni dhimma amantii hedduu irraa baratan.
+`
+},
+
+{
+id:"f4",
+title:"Hafsah رضي الله عنها",
+short:"Intala Umar ibn Al-Khaxxaab.",
+text:`
+Hafsah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Isheen intala Umar ibn Al-Khaxxaab رضي الله عنه turte.
+
+Qur'aana walitti qabamee ture keessaa mushafiin tokko yeroo ishee bira ture.
+`
+},
+
+{
+id:"f5",
+title:"Zaynab bint Khuzaymah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Zaynab bint Khuzaymah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Ar-Rahmaan ykn Ummul-Masaakiin jechuun beekamti jedhamee seenaa keessatti ni dhufa.
+`
+},
+
+{
+id:"f6",
+title:"Ummu Salamah رضي الله عنها",
+short:"Haadha Mu'minootaa fi dubartii beekamtuu.",
+text:`
+Ummu Salamah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Hikmaa fi hubannoo isheetiin beekamti.
+
+Taateewwan Siiraa keessatti gahee qabaatte.
+`
+},
+
+{
+id:"f7",
+title:"Zaynab bint Jahsh رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Zaynab bint Jahsh رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Isheen ibaadaa fi sadaqaa keessatti beekamti.
+`
+},
+
+{
+id:"f8",
+title:"Juwayriyyah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Juwayriyyah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Seenaa ishee keessatti Islaamni fi hariiroon hawaasaa gahee qaba.
+`
+},
+
+{
+id:"f9",
+title:"Ummu Habibah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Ummu Habibah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Isheen dursee gara Habashaa godaantota Muslimootaa keessaa turte.
+`
+},
+
+{
+id:"f10",
+title:"Safiyyah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Safiyyah رضي الله عنها haadha Mu'minootaa keessaa tokko.
+
+Nabiyyii ﷺ waliin erga Islaama fudhattee booda jireenya maatii keessa jiraatte.
+`
+},
+
+{
+id:"f11",
+title:"Maymuunah رضي الله عنها",
+short:"Haadha Mu'minootaa.",
+text:`
+Maymuunah رضي الله عنها haadha Mu'minootaa keessaa ishee dhumaa keessaa tokko.
+
+Nabiyyii ﷺ waliin fuudhaa heeruma qabaatte.
+`
+},
+
+{
+id:"f12",
+title:"Faaximah رضي الله عنها",
+short:"Intala Nabiyyii ﷺ.",
+text:`
+Faaximah رضي الله عنها intala Nabiyyii Muhammad ﷺ fi Khadiijah رضي الله عنها ti.
+
+Isheen Aliyy ibn Abii Xaalib رضي الله عنه waliin heerumte.
+
+Hasan fi Husayn رضي الله عنهما ilmaan isaanii keessaa.
+`
+}
+
+];
+
+
+/* =========================
+   HADIISA
+========================= */
+
+const hadith = [
+
+{
+id:"h1",
+title:"Niyyaa",
+short:"Hojiin niyyaa irratti hundaa'a.",
+text:`
+Nabiyyiin ﷺ akkana jedhan:
+
+"إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ"
+
+Hiikni isaa:
+"Dhugumatti, hojiiwwan niyyaa irratti hundaa'u."
+
+Barnoota:
+Hojii gaarii hojjachuuf niyyaa sirrii qabaachuun barbaachisaa dha.
+`
+},
+
+{
+id:"h2",
+title:"Rahmata",
+short:"Rahmata namaaf qabaachuu.",
+text:`
+Nabiyyiin ﷺ rahmata fi gara laafina barsiisan.
+
+Muslimni nama biraa irratti gara laafina qabaachuu qaba.
+
+Rahmanni maatii, ollaa, daa'immanii fi uumama hunda keessatti mul'achuu qaba.
+`
+},
+
+{
+id:"h3",
+title:"Amanamummaa",
+short:"Amanamummaa Muslimootaa.",
+text:`
+Amanamummaan amala guddaa Islaamaa ti.
+
+Nabiyyiin ﷺ amanamummaa fi dhugaa dubbachuu keessatti fakkeenya guddaa ture.
+
+Muslimni waadaa isaa eeguu fi amanamaa ta'uu qaba.
+`
+},
+
+{
+id:"h4",
+title:"Obsa",
+short:"Obsa yeroo rakkoo.",
+text:`
+Jireenya Nabiyyii ﷺ keessatti obsi bakka guddaa qaba.
+
+Makkaa keessatti hacuuccaa, Hijraa fi qormaata adda addaa keessa darbe.
+
+Muslimni yeroo rakkoo keessatti Rabbitti hirkachuu fi obsa qabaachuu qaba.
+`
+}
+
+];
+
+
+/* =========================
+   DATA HUNDAA
+========================= */
+
+const allData = [
+  ...sirah,
+  ...companions,
+  ...family,
+  ...hadith
+];
+
+
+/* =========================
+   VARIABLE
+========================= */
+
+let currentItem = null;
+
+
+/* =========================
+   CARD GENERATOR
+========================= */
+
+function createCard(item){
+
+  return `
+    <div class="card searchable">
+      <span class="badge">${getType(item.id)}</span>
+
+      <h3>${item.title}</h3>
+
+      <p>${item.short}</p>
+
+      <button class="openBtn"
+        onclick="openReader('${item.id}')">
+        Bani
+      </button>
+    </div>
+  `;
+}
+
+
+function getType(id){
+
+  if(id.startsWith("s")) return "Siiraa";
+  if(id.startsWith("c")) return "Sahaabaa";
+  if(id.startsWith("f")) return "Maatii";
+  if(id.startsWith("h")) return "Hadiisa";
+
+  return "Barnoota";
+}
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+function loadData(){
+
+  document.getElementById("sirahGrid").innerHTML =
+    sirah.map(createCard).join("");
+
+  document.getElementById("companionsGrid").innerHTML =
+    companions.map(createCard).join("");
+
+  document.getElementById("familyGrid").innerHTML =
+    family.map(createCard).join("");
+
+  document.getElementById("hadithGrid").innerHTML =
+    hadith.map(createCard).join("");
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+function showPage(id){
+
+  stopSpeech();
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
   });
 
-  document.getElementById(id).style.display="block";
+  document.getElementById("reader").classList.remove("active");
+
+  document.getElementById(id).classList.add("active");
 
   window.scrollTo({
     top:0,
@@ -441,15 +1493,30 @@ function openStory(id){
   });
 }
 
-function goHome(){
 
-  document.querySelectorAll(".content").forEach(function(el){
-    el.style.display="none";
+/* =========================
+   READER
+========================= */
+
+function openReader(id){
+
+  const item = allData.find(x=>x.id===id);
+
+  if(!item) return;
+
+  currentItem = item;
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
   });
 
-  document.getElementById("home").style.display="block";
+  document.getElementById("reader").classList.add("active");
 
-  document.getElementById("searchInput").value="";
+  document.getElementById("readerTitle").innerText =
+    item.title;
+
+  document.getElementById("readerText").innerText =
+    item.text;
 
   window.scrollTo({
     top:0,
@@ -457,30 +1524,215 @@ function goHome(){
   });
 }
 
-function searchStories(){
 
-  let input =
+function closeReader(){
+
+  document.getElementById("reader").classList.remove("active");
+
+  showPage("home");
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchAll(){
+
+  const q =
     document.getElementById("searchInput")
     .value
+    .trim()
     .toLowerCase();
 
-  let cards =
-    document.querySelectorAll(".story");
+  if(q===""){
+    showPage("home");
+    return;
+  }
 
-  cards.forEach(function(card){
+  const results = allData.filter(item=>
+    item.title.toLowerCase().includes(q) ||
+    item.short.toLowerCase().includes(q) ||
+    item.text.toLowerCase().includes(q)
+  );
 
-    let text =
-      card.innerText.toLowerCase();
+  showPage("searchPage");
 
-    if(text.includes(input)){
-      card.style.display="block";
-    }else{
-      card.style.display="none";
-    }
+  const box =
+    document.getElementById("searchResults");
 
-  });
+  if(results.length===0){
 
+    box.innerHTML = `
+      <div class="empty">
+        <h3>Bu'aan hin argamne</h3>
+        <p>
+          Jecha biraa yaali.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="grid">
+      ${results.map(createCard).join("")}
+    </div>
+  `;
 }
+
+
+/* =========================
+   FAVORITE
+========================= */
+
+function getFavorites(){
+
+  try{
+    return JSON.parse(
+      localStorage.getItem("siiraaFavorites") || "[]"
+    );
+  }catch(e){
+    return [];
+  }
+}
+
+
+function saveFavorites(list){
+
+  localStorage.setItem(
+    "siiraaFavorites",
+    JSON.stringify(list)
+  );
+}
+
+
+function toggleFavoriteCurrent(){
+
+  if(!currentItem) return;
+
+  let fav = getFavorites();
+
+  if(fav.includes(currentItem.id)){
+
+    fav = fav.filter(id=>id!==currentItem.id);
+
+    alert("⭐ Kuufama keessaa haqame.");
+
+  }else{
+
+    fav.push(currentItem.id);
+
+    alert("⭐ Kuufame.");
+  }
+
+  saveFavorites(fav);
+}
+
+
+function showFavorites(){
+
+  showPage("favoritesPage");
+
+  const ids = getFavorites();
+
+  const results =
+    allData.filter(item=>ids.includes(item.id));
+
+  const box =
+    document.getElementById("favoriteResults");
+
+  if(results.length===0){
+
+    box.innerHTML = `
+      <div class="empty">
+        <h3>⭐ Homaa hin kuufamne</h3>
+        <p>
+          Barruu barbaadde baniitii
+          "Kuusi" tuqi.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="grid">
+      ${results.map(createCard).join("")}
+    </div>
+  `;
+}
+
+
+/* =========================
+   TEXT TO SPEECH
+========================= */
+
+function speakText(){
+
+  if(!currentItem) return;
+
+  if(!("speechSynthesis" in window)){
+
+    alert(
+      "Bilbilli kee dubbisa sagalee browser kana hin deeggaru."
+    );
+
+    return;
+  }
+
+  stopSpeech();
+
+  const speech =
+    new SpeechSynthesisUtterance(
+      currentItem.title +
+      ". " +
+      currentItem.text
+    );
+
+  speech.lang = "om-ET";
+  speech.rate = 0.9;
+
+  window.speechSynthesis.speak(speech);
+}
+
+
+function stopSpeech(){
+
+  if("speechSynthesis" in window){
+    window.speechSynthesis.cancel();
+  }
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "siiraaDark",
+    document.body.classList.contains("dark")
+  );
+}
+
+
+/* =========================
+   START
+========================= */
+
+if(
+  localStorage.getItem("siiraaDark")==="true"
+){
+  document.body.classList.add("dark");
+}
+
+loadData();
 
 </script>
 
