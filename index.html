@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIIRAA - Seenaa Nabiyyii ﷺ</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f7f5;
+  color:#17251d;
+}
+
+header{
+  background:#075e54;
+  color:white;
+  padding:22px 15px;
+  text-align:center;
+}
+
+header h1{
+  font-size:30px;
+  margin-bottom:6px;
+}
+
+header p{
+  font-size:15px;
+}
+
+.search{
+  padding:15px;
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.search input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+.container{
+  padding:15px;
+  max-width:800px;
+  margin:auto;
+}
+
+.welcome{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px #0001;
+  text-align:center;
+}
+
+.welcome h2{
+  color:#075e54;
+  margin-bottom:10px;
+}
+
+.card{
+  background:white;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:12px;
+  box-shadow:0 2px 7px #0001;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:scale(1.01);
+}
+
+.card h3{
+  color:#075e54;
+  margin-bottom:7px;
+}
+
+.card p{
+  color:#555;
+  line-height:1.6;
+}
+
+.content{
+  display:none;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:15px;
+  box-shadow:0 2px 8px #0001;
+  line-height:1.9;
+}
+
+.content h2{
+  color:#075e54;
+  margin-bottom:12px;
+}
+
+.content h3{
+  margin-top:15px;
+  color:#075e54;
+}
+
+.back{
+  background:#075e54;
+  color:white;
+  border:none;
+  padding:11px 18px;
+  border-radius:9px;
+  margin-bottom:15px;
+  cursor:pointer;
+}
+
+mark{
+  background:#ffe58a;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>SIIRAA ﷺ</h1>
+  <p>Seenaa fi jireenya Nabiyyii Muhammad ﷺ</p>
+</header>
+
+<div class="search">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔎 Seenaa barbaadi..."
+    onkeyup="searchStories()">
+</div>
+
+<div class="container">
+
+<div id="home">
+
+  <div class="welcome">
+    <h2>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+    <p>
+      Baga gara SIIRAA dhuftan.
+      As keessatti seenaa Nabiyyii Muhammad ﷺ
+      tartiiba isaa hordofuun barachuu dandeessa.
+    </p>
+  </div>
+
+  <div class="card story" onclick="openStory('birth')">
+    <h3>1. Dhaloota Nabiyyii ﷺ</h3>
+    <p>Maatii, dhaloota fi ijoollummaa Nabiyyii ﷺ.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('youth')">
+    <h3>2. Dargaggummaa fi Amanamummaa</h3>
+    <p>Jireenya isaa yeroo dargaggummaa fi amala isaa.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('revelation')">
+    <h3>3. Jalqaba Wahyii</h3>
+    <p>Wahyiin jalqabaa akkamitti Nabiyyii ﷺ irratti bu'e?</p>
+  </div>
+
+  <div class="card story" onclick="openStory('makkah')">
+    <h3>4. Da'awaa Makkaa</h3>
+    <p>Da'awaa Tawhiidaa fi rakkoo Muslimoonni Makkaa keessa turan.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('hijrah')">
+    <h3>5. Hijraa gara Madiinaa</h3>
+    <p>Hijraa Nabiyyii ﷺ fi sahaabota isaa.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('madinah')">
+    <h3>6. Jireenya Madiinaa</h3>
+    <p>Hawaasa Islaamaa Madiinaa keessatti hundeessuu.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('battles')">
+    <h3>7. Ghazawaat</h3>
+    <p>Taateewwan waraanaa beekamoo yeroo Nabiyyii ﷺ.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('character')">
+    <h3>8. Akhlaaqa Nabiyyii ﷺ</h3>
+    <p>Rahmata, obsaa, haqaa fi amala gaarii isaa.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('family')">
+    <h3>9. Maatii Nabiyyii ﷺ</h3>
+    <p>Haadholii Mu'minotaa, ijoollee fi maatii isaa.</p>
+  </div>
+
+  <div class="card story" onclick="openStory('death')">
+    <h3>10. Dhuma Jireenyaa</h3>
+    <p>Guyyoota dhumaa jireenya Nabiyyii ﷺ.</p>
+  </div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div id="birth" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Dhaloota Nabiyyii Muhammad ﷺ</h2>
+
+<p>
+Nabiyyiin Muhammad ﷺ ilma Abdullah ibn Abdul-Muttalib ti.
+Inni keessaa gosa Quraysh, maatii Banu Haashim irraa dhalate.
+</p>
+
+<h3>Maatiin isaa</h3>
+
+<p>
+Maqaan haadha isaa Aaminah bint Wahb ture.
+Abbaan isaa Abdullah dhaloota isaa dura du'e.
+Kanaaf Nabiyyiin ﷺ abbaa malee guddachuu jalqabe.
+</p>
+
+<h3>Ijoollummaa</h3>
+
+<p>
+Ijoollummaa isaa keessatti haadha manaa isaatiin,
+ergasii immoo abbeera isaa fi namoota maatii isaa keessaa
+jiran waliin guddachaa ture.
+</p>
+</div>
+
+<div id="youth" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Dargaggummaa fi Amanamummaa</h2>
+
+<p>
+Nabiyyiin Muhammad ﷺ yeroo dargaggummaa isaa keessatti
+amanamummaa fi amala gaarii isaatiin beekamaa ture.
+Namoonni Makkaa isa
+<strong>Al-Amiin</strong> jechuun waamu turan.
+</p>
+
+<p>
+Inni nama amanamaa, dhugaa dubbatu fi nama haqaa ture.
+</p>
+</div>
+
+<div id="revelation" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Jalqaba Wahyii</h2>
+
+<p>
+Nabiyyiin Muhammad ﷺ yeroo umriin isaa waggaa 40 ga'u,
+Ghar Hiraa keessatti ibaadaa fi xiinxala keessa ture.
+</p>
+
+<p>
+Achitti Mala'ikni Jibriil عليه السلام itti dhufee,
+wahyii Rabbii irraa fide.
+</p>
+
+<h3>Jalqaba suuratu Al-'Alaq</h3>
+
+<p>
+﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾
+</p>
+
+<p>
+Kana booda Nabiyyiin ﷺ ummata gara Tawhiidaa fi
+ibaadaa Rabbii tokkichaatti waamuu jalqabe.
+</p>
+</div>
+
+<div id="makkah" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Da'awaa Makkaa</h2>
+
+<p>
+Nabiyyiin ﷺ Makkaa keessatti gara Rabbii tokkichaatti
+namoota waamuu jalqabe.
+</p>
+
+<p>
+Muslimoonni jalqabaa rakkoo fi hacuuccaa hedduu
+Quraysh irraa argatan. Ta'us Nabiyyiin ﷺ fi sahaabonni
+isaa sabrii fi jabaatanii amantii isaanii irratti itti fufan.
+</p>
+</div>
+
+<div id="hijrah" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Hijraa gara Madiinaa</h2>
+
+<p>
+Yeroo rakkoon Makkaa cimaa ta'etti,
+Nabiyyiin ﷺ sahaabota isaa waliin gara Madiinaa
+hijraa godhe.
+</p>
+
+<p>
+Hijraan kun seenaa Islaamaa keessatti taatee guddaa dha.
+Madiinaan booda bakka hawaasni Islaamaa itti
+cime taate.
+</p>
+</div>
+
+<div id="madinah" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Jireenya Madiinaa</h2>
+
+<p>
+Madiinaa keessatti Nabiyyiin ﷺ Masjida Nabawii ijaaree,
+Muslimoota walitti hidhuu fi hawaasa Islaamaa
+sirnaan hundeessuu irratti hojjetan.
+</p>
+
+<p>
+Obbolummaa Muslimootaa cimsuu fi haqaa irratti
+hawaasa barsiisuun hojii isaa keessaa ture.
+</p>
+</div>
+
+<div id="battles" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Ghazawaat</h2>
+
+<p>
+Yeroo Madiinaa keessatti Muslimoonni rakkoolee
+gara garaa keessa darban.
+Taateewwan beekamoo keessaa Badr, Uhud fi Khandaq
+seenaa Islaamaa keessatti bakka guddaa qabu.
+</p>
+
+<p>
+Taateewwan kana yeroo barattu, sababoota isaanii,
+barumsa isaanii fi waan irraa baratamu adda baasuun
+barbaachisaa dha.
+</p>
+</div>
+
+<div id="character" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Akhlaaqa Nabiyyii ﷺ</h2>
+
+<p>
+Nabiyyiin Muhammad ﷺ rahmata, dhugaa, amanamummaa,
+obsaa fi araara keessatti fakkeenya guddaa ture.
+</p>
+
+<p>
+Rabbii ol ta'aan Qur'aana keessatti akhlaaqa isaa
+ol kaasee ibseera.
+</p>
+
+<p>
+﴿وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ﴾
+</p>
+</div>
+
+<div id="family" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Maatii Nabiyyii ﷺ</h2>
+
+<p>
+Nabiyyiin ﷺ haadholii Mu'minotaa fi ijoollee qaba ture.
+Maatiin isaa seenaa Siiraa keessatti bakka guddaa qabu.
+</p>
+
+<p>
+Seenaa tokkoon tokkoon isaanii boqonnaa adda addaatiin
+gara fuulduraatti bal'inaan dabaluun ni danda'ama.
+</p>
+</div>
+
+<div id="death" class="content">
+<button class="back" onclick="goHome()">← Deebi'i</button>
+
+<h2>Dhuma Jireenyaa Nabiyyii ﷺ</h2>
+
+<p>
+Nabiyyiin Muhammad ﷺ ergaa Rabbii ummataaf dabarsuu,
+amantiif waamuu fi hawaasa Islaamaa barsiisuu keessatti
+jireenya isaa guutuu dabarse.
+</p>
+
+<p>
+Seenaa dhuma jireenyaa isaa fi barumsa Khutbaa Hajjatul-Wadaa'
+boqonnaa bal'aa keessatti dabaluun ni danda'ama.
+</p>
+</div>
+
+</div>
+
+<footer>
+SIIRAA ﷺ<br>
+Seenaa Nabiyyii Muhammad ﷺ
+</footer>
+
+<script>
+
+function openStory(id){
+
+  document.getElementById("home").style.display="none";
+
+  document.querySelectorAll(".content").forEach(function(el){
+    el.style.display="none";
+  });
+
+  document.getElementById(id).style.display="block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function goHome(){
+
+  document.querySelectorAll(".content").forEach(function(el){
+    el.style.display="none";
+  });
+
+  document.getElementById("home").style.display="block";
+
+  document.getElementById("searchInput").value="";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function searchStories(){
+
+  let input =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  let cards =
+    document.querySelectorAll(".story");
+
+  cards.forEach(function(card){
+
+    let text =
+      card.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      card.style.display="block";
+    }else{
+      card.style.display="none";
+    }
+
+  });
+
+}
+
+</script>
+
+</body>
+  </html>
